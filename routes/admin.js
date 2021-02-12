@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/login',(req,res)=>{
     console.log(req.body)
-	pool.query(`select * from admin where email = '${req.body.email}' and password =${req.body.password}`,(err,result)=>{
+	pool.query(`select * from admin where email = '${req.body.email}' and password ='${req.body.password}'`,(err,result)=>{
 		if(err) throw err;
 		else if(result[0]){
            req.session.adminid = result[0].id;
